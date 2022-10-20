@@ -1,0 +1,12 @@
+.fileNameImage::before {
+  background-color: rgb(186, 51, 51);
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+  position: fixed;
+  top: 110px;
+}
+
+.fileNameImage::before {
+  content: attr(data-checked);
+}
