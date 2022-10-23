@@ -1,6 +1,6 @@
 import React from "react";
-import file from "./Assests/file.png";
-import folder from "./Assests/folder.png";
+import file from ".././Assests/file.png";
+import folder from ".././Assests/folder.png";
 import "./MyData.css";
 
 const MyData = ({

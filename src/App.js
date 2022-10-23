@@ -2,13 +2,13 @@ import "./App.css";
 
 import addFile from "./Assests/add_new_button.png";
 import { useCallback, useEffect, useState } from "react";
-import MyData from "./MyData";
+import MyData from "./Components/MyData";
 import { BiArrowBack } from "react-icons/bi";
-import Modal from "./Modal";
+import Modal from "./Components/Modal";
 
 let current_directory = "root";
 let selected_file = "";
-let selectedType = "file";
+let selectedType = "File";
 
 const path = ["root"];
 let totalPath = "root";
@@ -106,6 +106,7 @@ function App() {
     modalType = "rename";
     if (e.target.innerText === "Rename") {
       setIsModalShown(true);
+      setIsError(false);
     } else if (e.target.innerText === "Delete") {
       DUMMY_DATA[0][current_directory][selectedType].map((value, index) => {
         if (value === selected_file)
@@ -160,6 +161,7 @@ function App() {
         className="addFile"
         onClick={() => {
           setIsModalShown(true);
+          setIsError(false);
           modalType = "create";
         }}
       />
