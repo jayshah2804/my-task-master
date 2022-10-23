@@ -55,36 +55,40 @@ function App() {
   const [render, setRender] = useState();
 
   const newFileCreateHandler = (fileName) => {
-    if (modalType === "rename") {
-      setShow(false);
-      if (
-        !DUMMY_DATA[0][current_directory][selectedType].find(
-          (ele) => ele === fileName.toLowerCase()
-        )
-      ) {
-        DUMMY_DATA[0][current_directory][selectedType].map((value, index) => {
-          if (value === selected_file)
-            DUMMY_DATA[0][current_directory][selectedType][index] = fileName;
-        });
-        setIsError("");
-        setIsModalShown(false);
+    if (fileName) {
+      if (modalType === "rename") {
+        setShow(false);
+        if (
+          !DUMMY_DATA[0][current_directory][selectedType].find(
+            (ele) => ele === fileName.toLowerCase()
+          )
+        ) {
+          DUMMY_DATA[0][current_directory][selectedType].map((value, index) => {
+            if (value === selected_file)
+              DUMMY_DATA[0][current_directory][selectedType][index] = fileName;
+          });
+          setIsError("");
+          setIsModalShown(false);
+        } else {
+          setIsError(selectedType + "already exist");
+        }
       } else {
-        setIsError(selectedType + "already exist");
+        if (!DUMMY_DATA[0][current_directory])
+          DUMMY_DATA[0][current_directory] = new dummyNode();
+        if (
+          !DUMMY_DATA[0][current_directory][selectedType].find(
+            (ele) => ele === fileName.toLowerCase()
+          )
+        ) {
+          DUMMY_DATA[0][current_directory][selectedType].push(fileName);
+          setIsModalShown(false);
+          setIsError("");
+        } else {
+          setIsError(selectedType + "already exist");
+        }
       }
     } else {
-      if (!DUMMY_DATA[0][current_directory])
-        DUMMY_DATA[0][current_directory] = new dummyNode();
-      if (
-        !DUMMY_DATA[0][current_directory][selectedType].find(
-          (ele) => ele === fileName.toLowerCase()
-        )
-      ) {
-        DUMMY_DATA[0][current_directory][selectedType].push(fileName);
-        setIsModalShown(false);
-        setIsError("");
-      } else {
-        setIsError(selectedType + "already exist");
-      }
+      setIsError("Please Enter Valid Filename");
     }
   };
   const folderDblclickedHandler = (folderName) => {

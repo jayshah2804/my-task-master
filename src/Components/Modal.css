@@ -52,6 +52,10 @@ input {
   margin-top: 20px;
 }
 
+.filetype {
+  margin: 0 30px;
+}
+
 .modal-container button:hover {
   background-color: rgb(31, 131, 197);
   color: white;
